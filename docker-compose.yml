@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7
+    container_name: redis
+
+  coordinator:
+    build:
+      context: .
+    image: mapreduce-node
+    container_name: coordinator
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: ["node", "coordinator.js"]
+
+  mapper1:
+    image: mapreduce-node
+    container_name: mapper1
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: ["node", "mapper.js"]
+
+  mapper2:
+    image: mapreduce-node
+    container_name: mapper2
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: ["node", "mapper.js"]
+
+  mapper3:
+    image: mapreduce-node
+    container_name: mapper3
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: ["node", "mapper.js"]
+
+  reducer1:
+    image: mapreduce-node
+    container_name: reducer1
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: ["node", "reducer.js"]
+
+  reducer2:
+    image: mapreduce-node
+    container_name: reducer2
+    depends_on:
+      - redis
+    volumes:
+      - .:/app
+    command: ["node", "reducer.js"]
