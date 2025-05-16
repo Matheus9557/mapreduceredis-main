@@ -44,12 +44,7 @@ A proposta é simular como grandes volumes de dados podem ser processados em par
 .
 ├── input/                    # input.txt com exemplo de teste
 ├── chunks/                  # Arquivos chunk0.txt a chunk9.txt (divididos pelo generateChunks)
-├── intermediate/            # Saídas intermediárias dos mappers: mapper_chunkX.txt.json
-├── intermediates/           # Outra saída dos mappers: intermediateX.json
-├── reducer-input/           # Entradas dos reducers: inputX.json (chave → valores[])
 ├── reducer-output/          # Saídas dos reducers (JSON em .txt)
-├── reducers/                # Resultados formatados (ex: lista de objetos chave/valor)
-├── outputs/                 # Resultado final consolidado: final-result.txt
 │
 ├── coordinator.js           # Coordena o fluxo: Map → Shuffle → Reduce
 ├── generateChunks.js        # Divide input.txt ou data.txt em chunks
